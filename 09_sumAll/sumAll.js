@@ -1,25 +1,20 @@
-const sumAll = function(firstNum, secondNum) {
+const sumAll = function(min, max) { // [4, 1]
+
+    if (min < 0 || max < 0 || !Number.isInteger(min) || !Number.isInteger(max)) {
+        return "ERROR";
+    }
+
     let sum = 0;
 
-    if (firstNum < 0 || secondNum < 0) {
-        return "ERROR";
+    if (min > max) {
+        const temp = min; // 4
+        min = max; // [1, 1]
+        max = temp; [1, 4]
     }
 
-    if (!Number.isInteger(firstNum) || !Number.isInteger(secondNum)) {
-        return "ERROR";
+    for (let i = min; i <= max; i++) {
+        sum += i;
     }
-
-    if (secondNum > firstNum) {
-        for (let i = firstNum; i <= secondNum; i++) {
-            sum += i;
-        }
-    } else if (firstNum > secondNum) {
-        for (let i = firstNum; i >= secondNum; i--) {
-            sum += i;
-        }
-    }
-    
-
     return sum;
 };
 
